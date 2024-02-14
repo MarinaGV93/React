@@ -1,0 +1,26 @@
+/* Lista */
+.social_list {
+  display: flex;
+
+  /* Centralizar na horizontal */
+  justify-content: center;
+
+  /* Centralizar na vertical */
+  align-items: center;
+
+  list-style: none;
+  color: blue;
+}
+
+/* Itens */
+.social_list li {
+  margin: 0 1em;
+}
+
+/* Ícones */
+.social_list svg {
+  font-size: 1.5em;
+
+  /* Simular um link */
+  cursor: pointer;
+}

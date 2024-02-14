@@ -1,0 +1,15 @@
+/* CSS global */
+body {
+  padding: 50px;
+  padding-bottom: 500px;
+  background-color: #efefef;
+}
+
+h1 {
+  color: blue;
+}
+
+p {
+  background-color: #999;
+  padding: 10px;
+}

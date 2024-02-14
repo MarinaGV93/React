@@ -1,0 +1,130 @@
+- Criar projeto
+  npx create-react-app nome-projeto
+
+- npm start
+  iniciar o servidor de desenvolvimento
+
+- npm run build
+  transformar o app em arquivo estático para a produção
+
+- npm test
+  testes da aplicação
+
+- npm run eject
+  modificar os scripts do
+
+  Arquivos
+
+- package.json
+  lista as dependências e os scripts
+
+-.gitignore
+ignorar alguns arquivos pro git
+
+- node_modules
+  dependências do react
+
+- public
+  Arquivos iniciais
+
+  - robots.txt
+    Leitura de robôs
+
+  - manifest.json
+
+  - index.html
+    O navegador irá abrir
+
+- src
+  Pasta que irá alterar mais
+
+  - index.js
+    Arquivo base.
+    Onde faz o bootstrap
+
+  - App.test.js
+    Arquivo de teste
+
+  - App.js
+    O que se inicializa
+    Aqui que são feitas as alterações
+
+JSX
+É como um HTML, mas dentro do JS
+Pode interpolar variáveis, inserindo ela entre {}
+Executar funções
+Inserir valores e atributos de tags
+
+Componentes
+Permitir dividir a aplicação em partes
+Renderizam JSX, assim como App.js (que é um componente)
+Precisa criar um arquivo de componente e importá-lo onde precisa utilizar
+
+Props
+Valores passados para componentes. Um componente filho vai receber uma propriedade do componente pai
+Pode deixar dinâmicos, mudando a execução por causa do valor da Props
+O valor é passado como atributo (tag) na chamada do componente
+Precisa ser resgatado dentro de uma propriedade/argumento chamada props na função de definição do componente
+São somente leitura
+Pode definir tipos (string, number...), realizando uma espécie de validação. Em um objeto chamado propTypes no próprio componente
+Há a possibilidade de definir um valor padrão, utilizando o objeto defaultProps
+
+Adicionando CSS
+Pode ser adicionado de forma global no index.css
+É possível estilizar a nível de componentes, usando o CSS modules, criando um arquivo como componente.module.css e chamar no componente
+
+Fragments (Fragmentos)
+Permite a criação de um componente sem elemento pai
+Descomplicar os nós do DOM. Só coloca o que precisas
+A sintaxe é <> e </>, não há nome para a tag
+Cria no próprio JSX
+
+Eventos
+São os mesmos eventos do DOM. Tem eventos para responder a um click
+É atrelado a uma tag que irá executá-lo
+Geralmente um método é atribuído ao evento. Deve ser criado no componente
+
+useState
+É um hook
+Consegue manusear o estado (dados que o componente está lidando) de um componente
+Funciona com eventos
+Pode atrelar um evento a mudança de state
+
+Métodos por props
+Os métodos podem ser passados por props. Um componente filho pode ativar o método do seu pai
+Acessar o método por meio de um evento
+A sintaxe é a mesma de um props de dados: props.meuEvento
+
+Renderizando condicional (if).
+Atrelar a exibição de algum elemento a um if
+Envolve as tags em {}
+Como as chaves executam JS, cria nossa condição
+É possível usar state para criar as condições
+
+Renderização de listas
+Precisa de um array (geralmente de objetos)
+Utiliza a função map para percorrer cada um dos itens, podendo renderizar algo na tela para cada item
+É possível unir operadores condicionais com a renderização de listas
+
+State Lift
+Técnica utilizada para compartilhar states
+É normal vários componentes dependerem do mesmo estado
+Precisa elevar o nível do mesmo a um componente pai
+Centralizar o state pai e definir quem usa e quem define (setState)
+
+React Router (rotas)
+É um pacote para mudança de URLs da aplicação
+Pode acessar outras views, sem o page reload
+Troca apenas uma parte do layout da aplicação, ou seja, o que muda de view para view
+Precisa instalar esse pacote no projeto:
+  npm install react-router-dom
+Realizar algumas mudanças em como o App é estruturado
+
+React Icons
+Pacote de ícones externos
+Adicionar através do npm
+  npm install react-icons
+Permite adicionar ícones com uma síntaxe parecida de componentes
+Há uma grande quantidade de ícones disponíveis
+
+

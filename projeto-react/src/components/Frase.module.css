@@ -1,0 +1,13 @@
+/* CSS em um componente */
+/* Não pode usar classe.
+Usar como .fraseContainer ou .frase_container */
+.fraseContainer {
+  background-color: blue;
+  border: 1px solid #111;
+}
+
+.fraseContent {
+  color: #fff;
+  background-color: #333;
+  margin: 0;
+}
