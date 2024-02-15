@@ -1,0 +1,23 @@
+.container {
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  /* Quando os elementos filhos ultrapassarem a largura de 1200, vão pra baixo criando uma nova linha */
+  flex-wrap: wrap;
+}
+
+/* Classe helps */
+.min-height {
+  min-height: 75%;
+}
+
+.start {
+  /* Colocar os conteúdos para o início */
+  justify-content: flex-start;
+}
+
+.column {
+  flex-direction: column;
+  justify-content: flex-start;
+}
