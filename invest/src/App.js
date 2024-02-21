@@ -17,11 +17,11 @@ function App() {
         {/* Controlar outros aspectos */}
         <Container customClass="min-height">
           <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/projects" element={<Projects />} />
-            <Route exact path="/contact" element={<Contact />} />
-            <Route exact path="/company" element={<Company />} />
-            <Route exact path="/newproject" element={<NewProject />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/company" element={<Company />} />
+            <Route path="/newproject" element={<NewProject />} />
           </Routes>
         </Container>
         <Footer />

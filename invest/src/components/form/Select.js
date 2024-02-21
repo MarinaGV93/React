@@ -4,7 +4,13 @@ function Select({ text, name, options, handleOnChange, value }) {
   return (
     <div className={styles.form_control}>
       <label htmlFor={name}>{text}:</label>
-      <select name={name} id={name}>
+      <select
+        name={name}
+        id={name}
+        onChange={handleOnChange}
+        // Ou vazio para deixar a primeira opção selecionado
+        value={value || ""}
+      >
         <option>Selecione uma opção</option>
         {/* Imprimir as options
         renomear em OPTION */}
