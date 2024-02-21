@@ -6,6 +6,14 @@ function Select({ text, name, options, handleOnChange, value }) {
       <label htmlFor={name}>{text}:</label>
       <select name={name} id={name}>
         <option>Selecione uma opção</option>
+        {/* Imprimir as options
+        renomear em OPTION */}
+        {options.map((option) => (
+          // Renderizar em options
+          <option value={option.id} key={option.id}>
+            {option.name}
+          </option>
+        ))}
       </select>
     </div>
   );

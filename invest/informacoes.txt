@@ -1,0 +1,14 @@
+Conectando com API
+Para a extensão 'json-server' funcionar, precisa criar um arquivo chamado 'db.json' (API/banco de dados)
+Instalar:
+  npm install -g json-server
+
+Criar um script em 'package.json' para rodar, como fosse o back-end:
+  "backend": "json-server --watch db.json --port 5000"
+watch = monitorando as mudanças no json
+Rodar: 
+  npm run backend
+
+db.json
+Criar entidades que vai ter:
+"projects": [] = consegue acessar uma página referente a esses dados
