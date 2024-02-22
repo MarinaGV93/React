@@ -10,6 +10,28 @@
       },
       "cost": 0,
       "services": []
+    },
+    {
+      "id": "977e",
+      "name": "Teste",
+      "budget": "12",
+      "category": {
+        "id": "2",
+        "name": "Desenvolvimento"
+      },
+      "cost": 0,
+      "services": []
+    },
+    {
+      "id": "245b",
+      "name": "Teste",
+      "budget": "1",
+      "category": {
+        "id": "2",
+        "name": "Desenvolvimento"
+      },
+      "cost": 0,
+      "services": []
     }
   ],
   "categories": [
