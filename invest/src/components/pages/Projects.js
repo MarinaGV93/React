@@ -14,6 +14,9 @@ function Projects() {
   // Sempre iniciando
   const [removeLoading, setRemoveLoading] = useState(false);
 
+  // Mensagem
+  const [projectMessage, setProjectMessage] = useState("");
+
   const location = useLocation();
 
   /* Acessar o encaminhamento da mensagem */
@@ -31,6 +34,7 @@ function Projects() {
     // Atrasar o loading
     setTimeout(() => {
       fetch("http://localhost:5000/projects", {
+        // Entrega um projeto
         method: "GET",
         headers: {
           "Content-type": "application/json",
@@ -48,14 +52,38 @@ function Projects() {
     }, 300);
   }, []);
 
+  // Remover projeto
+  function removeProject(id) {
+    // Acessar o id do projeto
+    fetch(`http://localhost:5000/projects/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then(() => {
+        // Excluir o projeto do array
+        setProjects(projects.filter((project) => project.id !== id));
+
+        // Mensagem de remoçao
+        setProjectMessage("Projeto removido com sucesso!");
+      })
+      .catch((err) => console.log(err));
+  }
+
   return (
     <div className={styles.project_container}>
       <div className={styles.title_container}>
         <h1>Meus Projetos</h1>
         <LinkButton to="/newproject" text="Criar Projeto" />
       </div>
+
       {/* Componente de mensagem */}
       {message && <Message type="success" msg={message} />}
+
+      {/* Mensagem de remoçao */}
+      {projectMessage && <Message type="success" msg={projectMessage} />}
       <Container customClass="start">
         {/* Exibir projetos dinamicamente */}
         {projects.length > 0 &&
@@ -66,6 +94,7 @@ function Projects() {
               budget={project.budget}
               category={project.category.name}
               key={project.id}
+              handleRemove={removeProject}
             />
           ))}
         {/* removeLoading = false */}
