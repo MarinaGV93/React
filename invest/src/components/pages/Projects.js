@@ -3,12 +3,16 @@ import { useLocation } from "react-router-dom";
 import styles from "./Projects.module.css";
 import Container from "../layout/Container";
 import LinkButton from "../layout/LinkButton";
+import Loading from "../layout/Loading";
 import ProjectCard from "../project/ProjectCard";
 import { useState, useEffect } from "react";
 
 function Projects() {
   // Salvar os projetos
   const [projects, setProjects] = useState([]);
+
+  // Sempre iniciando
+  const [removeLoading, setRemoveLoading] = useState(false);
 
   const location = useLocation();
 
@@ -24,18 +28,24 @@ function Projects() {
 
   // Buscar os projetos do banco
   useEffect(() => {
-    fetch("http://localhost:5000/projects", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        console.log(data);
-        setProjects(data);
+    // Atrasar o loading
+    setTimeout(() => {
+      fetch("http://localhost:5000/projects", {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+        },
       })
-      .catch((err) => console.log(err));
+        .then((resp) => resp.json())
+        .then((data) => {
+          console.log(data);
+          setProjects(data);
+
+          // Quando carregar os projetos, para o loading
+          setRemoveLoading(true);
+        })
+        .catch((err) => console.log(err));
+    }, 300);
   }, []);
 
   return (
@@ -58,6 +68,13 @@ function Projects() {
               key={project.id}
             />
           ))}
+        {/* removeLoading = false */}
+        {!removeLoading && <Loading />}
+
+        {/* Quando nao tiver projetos */}
+        {removeLoading && projects.length === 0 && (
+          <p>Não há projetos cadastrados</p>
+        )}
       </Container>
     </div>
   );
