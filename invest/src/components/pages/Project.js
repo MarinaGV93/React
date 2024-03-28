@@ -13,6 +13,7 @@ function Project() {
 
   const [project, setProject] = useState([]);
 
+  // Exbir/esconder formulário do projeto
   const [showProjectForm, setShowProjectForm] = useState(false);
 
   // Mensagem
@@ -20,6 +21,9 @@ function Project() {
 
   // Tipo da mensagem
   const [type, setType] = useState();
+
+  // Exbir/esconder formulário do serviço
+  const [showServiceForm, setShowServiceForm] = useState(false);
 
   // Chamar o projeto
   useEffect(
@@ -43,6 +47,9 @@ function Project() {
   );
 
   function editPost(project) {
+    // Quando for editar
+    setMessage("");
+
     // Quando tiver o valor total de orçamento menor que o custo feito do projeto
     if (project.budget < project.cost) {
       setMessage("O orçamento não pode ser menor que o custo do projeto");
@@ -70,7 +77,7 @@ function Project() {
         setShowProjectForm(false);
         // setShowProjectForm(!showProjectForm);
 
-        setMessage("Projeto atualizado");
+        setMessage("Projeto atualizado com sucesso");
         setType("success");
       })
       .catch((err) => console.log(err));
@@ -78,6 +85,10 @@ function Project() {
 
   function toggleProjectForm() {
     setShowProjectForm(!showProjectForm);
+  }
+
+  function toggleServiceForm() {
+    setShowServiceForm(!showServiceForm);
   }
 
   return (
@@ -117,6 +128,25 @@ function Project() {
                 </div>
               )}
             </div>
+            {/* Service */}
+            <div className={styles.service_form_container}>
+              <h2>Adicione um serviço:</h2>
+              <button className={styles.btn} onClick={toggleServiceForm}>
+                {/* Se não tiver projectForm sendo exibido */}
+                {!showServiceForm ? "Adicionar serviço" : "Fechar"}
+              </button>
+              <div className={styles.project_info}>
+                {showServiceForm && (
+                  <div>
+                    <p>Formulario do seriço</p>
+                  </div>
+                )}
+              </div>
+            </div>
+            <h2>Serviços</h2>
+            <Container customClass="start">
+              <p>Itens de serviços</p>
+            </Container>
           </Container>
         </div>
       ) : (
