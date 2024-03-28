@@ -8,8 +8,75 @@
         "id": "2",
         "name": "Desenvolvimento"
       },
-      "cost": 0,
-      "services": []
+      "cost": 1110,
+      "services": [
+        {
+          "name": "Teste",
+          "cost": "100",
+          "description": "Testando",
+          "id": "4cc75a4a-8563-40d3-9ebe-0cec699fb71c"
+        },
+        {
+          "name": "Teste",
+          "cost": "100",
+          "description": "Testando",
+          "id": "45f639b3-6702-4d6c-83b1-c4e629227d6c"
+        },
+        {
+          "name": "Teste",
+          "cost": "100",
+          "description": "Testando",
+          "id": "c932ac69-654b-4ec9-ab88-6f593205f219"
+        },
+        {
+          "name": "Teste",
+          "cost": "100",
+          "description": "Testando",
+          "id": "7b29b44e-bd5b-4c8d-9880-91d119318c4f"
+        },
+        {
+          "name": "Teste",
+          "cost": "100",
+          "description": "Testando",
+          "id": "7b29b44e-bd5b-4c8d-9880-91d119318c4f"
+        },
+        {
+          "name": "Teste",
+          "cost": "100",
+          "description": "Testando",
+          "id": "7b29b44e-bd5b-4c8d-9880-91d119318c4f"
+        },
+        {
+          "name": "Teste",
+          "cost": "100",
+          "description": "Testando",
+          "id": "7b29b44e-bd5b-4c8d-9880-91d119318c4f"
+        },
+        {
+          "name": "Teste",
+          "cost": "100",
+          "description": "Testando",
+          "id": "7b29b44e-bd5b-4c8d-9880-91d119318c4f"
+        },
+        {
+          "name": "Teste",
+          "cost": "100",
+          "description": "Testando",
+          "id": "7b29b44e-bd5b-4c8d-9880-91d119318c4f"
+        },
+        {
+          "name": "Teste",
+          "cost": "100",
+          "description": "Testando",
+          "id": "37f1df71-17a5-4177-81fd-f22b7c7067d7"
+        },
+        {
+          "name": "Teste",
+          "cost": "110",
+          "description": "Testando",
+          "id": "6bdaabe8-a8c0-4108-ab50-f1f50470e0fb"
+        }
+      ]
     },
     {
       "id": "8217",

@@ -1,10 +1,15 @@
+import { parse, v4 as uuidv4 } from "uuid";
+
 import styles from "./Project.module.css";
+
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+
 import Loading from "../layout/Loading";
 import Container from "../layout/Container";
 import ProjectForm from "../project/ProjectForm";
 import Message from "../layout/Message";
+import ServiceForm from "../service/ServiceForm";
 
 function Project() {
   // Pegar o projeto pelo id do BD para imprimir os dados
@@ -83,6 +88,50 @@ function Project() {
       .catch((err) => console.log(err));
   }
 
+  function createService(project) {
+    setMessage("");
+
+    // Último serviço
+    const lastService = project.services[project.services.length - 1];
+
+    // Colocar um ID único, utilizando o pacote uuidv4
+    lastService.id = uuidv4();
+
+    // Pegar o custo do ultimo serviço
+    const lastServiceCost = lastService.cost;
+
+    // Novo custo (custo atual + custo do ultimo serviço)
+    const newCost = parseFloat(project.cost) + parseFloat(lastServiceCost);
+
+    // Validação do serviço (se passou do valor máximo)
+    // Se valor novo for maior do que o valor que tem do projeto (budget)
+    if (newCost > parseFloat(project.budget)) {
+      setMessage("Orçamento ultrapassado, verifique o valor do serviço");
+      setType("error");
+      // Excluir o serviço
+      project.services.pop();
+      return false;
+    }
+
+    // Adicionar custo do serviço no projeto
+    project.cost = newCost;
+
+    // Atualização parcial do projeto
+    fetch(`http://localhost:5000/projects/${project.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(project),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        // Exibir os serviços
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  }
+
   function toggleProjectForm() {
     setShowProjectForm(!showProjectForm);
   }
@@ -115,7 +164,7 @@ function Project() {
                     <span>Total de orçamento:</span> R${project.budget}
                   </p>
                   <p>
-                    <span>Total utilizado:</span> R${project.const}
+                    <span>Total utilizado:</span> R${project.cost}
                   </p>
                 </div>
               ) : (
@@ -137,9 +186,11 @@ function Project() {
               </button>
               <div className={styles.project_info}>
                 {showServiceForm && (
-                  <div>
-                    <p>Formulario do seriço</p>
-                  </div>
+                  <ServiceForm
+                    handleSubmit={createService}
+                    btnText="Adicionar Serviço"
+                    projectData={project}
+                  />
                 )}
               </div>
             </div>

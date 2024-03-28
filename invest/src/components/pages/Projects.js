@@ -1,11 +1,13 @@
-import Message from "../layout/Message";
 import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 import styles from "./Projects.module.css";
+
 import Container from "../layout/Container";
+import Message from "../layout/Message";
 import LinkButton from "../layout/LinkButton";
 import Loading from "../layout/Loading";
 import ProjectCard from "../project/ProjectCard";
-import { useState, useEffect } from "react";
 
 function Projects() {
   // Salvar os projetos
