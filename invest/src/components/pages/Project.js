@@ -21,7 +21,7 @@ function Project() {
   const [project, setProject] = useState([]);
 
   // Exbir/esconder serviço. Começa vazio
-  const [services, serServices] = useState([]);
+  const [services, setServices] = useState([]);
 
   // Exbir/esconder formulário do projeto
   const [showProjectForm, setShowProjectForm] = useState(false);
@@ -48,7 +48,7 @@ function Project() {
           .then((resp) => resp.json())
           .then((data) => {
             setProject(data);
-            serServices(data.services);
+            setServices(data.services);
           })
           .catch((err) => console.log(err));
       }, 300);
@@ -140,7 +140,40 @@ function Project() {
       .catch((err) => console.log(err));
   }
 
-  // functionremoveService() {}
+  function removeService(id, cost) {
+    
+    // Atualizaçao dos serviços
+    const servicesUpdated = project.services.filter(
+      // Tirar o serviço com o id que passar pelo removido
+      (service) => service.id !== id
+    );
+
+    const projectUpdated = project;
+
+    // Remover o serviço
+    projectUpdated.services = servicesUpdated;
+
+    // Remover o custo
+    projectUpdated.cost = parseFloat(projectUpdated.cost) - parseFloat(cost);
+
+    fetch(`http://localhost:5000/projects/${projectUpdated.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(projectUpdated),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        // Setar o projeto atualizado
+        setProject(projectUpdated);
+
+        // Atualizar serviço
+        setServices(servicesUpdated);
+        setMessage("Serviço removido com sucesso");
+      })
+      .catch((err) => console.log(err));
+  }
 
   function toggleProjectForm() {
     setShowProjectForm(!showProjectForm);
@@ -216,7 +249,7 @@ function Project() {
                     cost={service.cost}
                     description={service.description}
                     key={service.id}
-                    // handleRemove={removeService}
+                    handleRemove={removeService}
                   />
                 ))}
               {services.length === 0 && <p>Não há serviços cadastrados</p>}
