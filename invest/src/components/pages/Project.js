@@ -114,9 +114,13 @@ function Project() {
     if (newCost > parseFloat(project.budget)) {
       setMessage("Orçamento ultrapassado, verifique o valor do serviço");
       setType("error");
+
       // Excluir o serviço
       project.services.pop();
       return false;
+    } else {
+      setMessage("Serviço adicionado com sucesso");
+      setType("success");
     }
 
     // Adicionar custo do serviço no projeto
@@ -134,14 +138,15 @@ function Project() {
       .then((data) => {
         // Exibir os serviços
         // console.log(data);
-        // Fechar o formulárop
+
+        // Fechar o formuláro
         setShowServiceForm(false);
       })
       .catch((err) => console.log(err));
   }
 
   function removeService(id, cost) {
-    
+    setMessage("");
     // Atualizaçao dos serviços
     const servicesUpdated = project.services.filter(
       // Tirar o serviço com o id que passar pelo removido
@@ -171,6 +176,7 @@ function Project() {
         // Atualizar serviço
         setServices(servicesUpdated);
         setMessage("Serviço removido com sucesso");
+        setType("error");
       })
       .catch((err) => console.log(err));
   }

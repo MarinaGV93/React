@@ -19,6 +19,9 @@ function Projects() {
   // Mensagem
   const [projectMessage, setProjectMessage] = useState("");
 
+  // Tipo da mensagem
+  const [type, setType] = useState();
+
   const location = useLocation();
 
   /* Acessar o encaminhamento da mensagem */
@@ -70,6 +73,7 @@ function Projects() {
 
         // Mensagem de remoçao
         setProjectMessage("Projeto removido com sucesso!");
+        setType("success");
       })
       .catch((err) => console.log(err));
   }

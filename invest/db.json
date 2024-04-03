@@ -8,15 +8,8 @@
         "id": "2",
         "name": "Desenvolvimento"
       },
-      "cost": 600,
-      "services": [
-        {
-          "name": "Teste",
-          "cost": "100",
-          "description": "Testando",
-          "id": "4cc75a4a-8563-40d3-9ebe-0cec699fb71c"
-        }
-      ]
+      "cost": 0,
+      "services": []
     },
     {
       "id": "8217",
